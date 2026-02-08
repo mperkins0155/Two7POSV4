@@ -1,6 +1,10 @@
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
+import { loadRuntimeConfig } from './lib/config';
 
-// Render the app immediately without waiting for config
-createRoot(document.getElementById('root')!).render(<App />);
+const root = createRoot(document.getElementById('root')!);
+
+loadRuntimeConfig().finally(() => {
+  root.render(<App />);
+});
