@@ -1,5 +1,6 @@
 from core.database import Base
 from sqlalchemy import Boolean, Column, DateTime, Integer, String
+from sqlalchemy.sql import func
 
 
 class Modifier_groups(Base):
@@ -14,4 +15,4 @@ class Modifier_groups(Base):
     max_selections = Column(Integer, nullable=True)
     is_required = Column(Boolean, nullable=True, default=False, server_default='false')
     sort_order = Column(Integer, nullable=True, default=0, server_default='0')
-    created_at = Column(DateTime(timezone=True), nullable=True)
+    created_at = Column(DateTime(timezone=True), nullable=True, server_default=func.now())

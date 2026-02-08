@@ -1,5 +1,6 @@
 from core.database import Base
 from sqlalchemy import Column, DateTime, Float, Integer, String
+from sqlalchemy.sql import func
 
 
 class Order_item_modifiers(Base):
@@ -12,4 +13,4 @@ class Order_item_modifiers(Base):
     modifier_name = Column(String, nullable=False)
     option_name = Column(String, nullable=False)
     price_adjustment = Column(Float, nullable=True, default=0, server_default='0')
-    created_at = Column(DateTime(timezone=True), nullable=True)
+    created_at = Column(DateTime(timezone=True), nullable=True, server_default=func.now())
