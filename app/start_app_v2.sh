@@ -20,11 +20,49 @@ log_warning() {
 }
 
 log_error() {
-    echo "[ERROR] $(date '+%Y-%m-%d %H:%M:%S') $1"
+    echo "[ERROR] $(date '+%Y-%m-%d %H:%M:%S') $1" >&2
 }
 
 log_debug() {
     echo "[DEBUG] $(date '+%Y-%m-%d %H:%M:%S') $1"
+}
+
+# Check if a package index URL is reachable
+is_index_reachable() {
+    local index_url=$1
+    if [ -z "$index_url" ]; then
+        return 1
+    fi
+    if ! command -v curl >/dev/null 2>&1; then
+        log_warning "curl not available; cannot verify package index reachability"
+        return 1
+    fi
+    curl -fsSI --max-time 5 "$index_url" >/dev/null 2>&1
+}
+
+# Select a working package index URL
+select_package_index() {
+    local primary_index=$1
+    local fallback_indices=(
+        "${PIP_INDEX_URL:-}"
+        "https://pypi.ace-research.openai.org/simple"
+        "https://pypi.org/simple"
+    )
+
+    if is_index_reachable "$primary_index"; then
+        echo "$primary_index"
+        return 0
+    fi
+
+    for index_url in "${fallback_indices[@]}"; do
+        if is_index_reachable "$index_url"; then
+            echo "$index_url"
+            return 0
+        fi
+    done
+
+    log_error "No reachable Python package index found. Set PIP_INDEX_URL to a reachable index."
+    return 1
 }
 
 # Get local IP address
@@ -1208,11 +1246,26 @@ main() {
     if [ "$LOCAL_MODE" = true ]; then
         uv venv
         source .venv/bin/activate
-        uv pip install  -r requirements.txt -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com || true
-        uv pip install  -r requirements.default -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
+        log_info "Installing backend dependencies (local mode)..."
+        local primary_index="http://mirrors.aliyun.com/pypi/simple"
+        local selected_index
+        if ! selected_index=$(select_package_index "$primary_index"); then
+            exit 1
+        fi
+        if [ "$selected_index" = "$primary_index" ]; then
+            uv pip install -r requirements.txt -i "$selected_index" --trusted-host mirrors.aliyun.com || true
+            uv pip install -r requirements.default -i "$selected_index" --trusted-host mirrors.aliyun.com
+        else
+            uv pip install -r requirements.txt --index-url "$selected_index" || true
+            uv pip install -r requirements.default --index-url "$selected_index"
+        fi
     else
-        uv pip install  -r requirements.txt || true
-        uv pip install  -r requirements.default
+        local selected_index
+        if ! selected_index=$(select_package_index ""); then
+            exit 1
+        fi
+        uv pip install -r requirements.txt --index-url "$selected_index" || true
+        uv pip install -r requirements.default --index-url "$selected_index"
     fi
     
     # Pre-install frontend dependencies
