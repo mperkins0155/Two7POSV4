@@ -14,33 +14,41 @@ const defaultConfig = {
 // Function to load runtime configuration
 export async function loadRuntimeConfig(): Promise<void> {
   try {
-    console.log('🔧 DEBUG: Starting to load runtime config...');
     // Try to load configuration from a config endpoint
     const response = await fetch('/api/config');
-    if (response.ok) {
-      const contentType = response.headers.get('content-type');
-      // Only parse as JSON if the response is actually JSON
-      if (contentType && contentType.includes('application/json')) {
-        runtimeConfig = await response.json();
-        console.log('Runtime config loaded successfully');
-      } else {
-        console.log(
-          'Config endpoint returned non-JSON response, skipping runtime config'
-        );
+    if (!response.ok && response.status === 404) {
+      if (import.meta.env.DEV) {
+        console.debug('Config endpoint not found at /api/config, trying /api/v1/config');
       }
-    } else {
-      console.log(
-        '🔧 DEBUG: Config fetch failed with status:',
-        response.status
-      );
+      await loadRuntimeConfigFallback();
+      return;
     }
+    await parseRuntimeConfig(response);
   } catch (error) {
-    console.log('Failed to load runtime config, using defaults:', error);
+    if (import.meta.env.DEV) {
+      console.debug('Failed to load runtime config, using defaults:', error);
+    }
   } finally {
     configLoading = false;
-    console.log(
-      '🔧 DEBUG: Config loading finished, configLoading set to false'
-    );
+  }
+}
+
+async function loadRuntimeConfigFallback(): Promise<void> {
+  const response = await fetch('/api/v1/config');
+  await parseRuntimeConfig(response);
+}
+
+async function parseRuntimeConfig(response: Response): Promise<void> {
+  if (response.ok) {
+    const contentType = response.headers.get('content-type');
+    // Only parse as JSON if the response is actually JSON
+    if (contentType && contentType.includes('application/json')) {
+      runtimeConfig = await response.json();
+    } else if (import.meta.env.DEV) {
+      console.debug('Config endpoint returned non-JSON response, skipping runtime config');
+    }
+  } else if (import.meta.env.DEV) {
+    console.debug('Config fetch failed with status:', response.status);
   }
 }
 
@@ -48,13 +56,11 @@ export async function loadRuntimeConfig(): Promise<void> {
 export function getConfig() {
   // If config is still loading, return default config to avoid using stale Vite env vars
   if (configLoading) {
-    console.log('Config still loading, using default config');
     return defaultConfig;
   }
 
   // First try runtime config (for Lambda)
   if (runtimeConfig) {
-    console.log('Using runtime config');
     return runtimeConfig;
   }
 
@@ -63,12 +69,10 @@ export function getConfig() {
     const viteConfig = {
       API_BASE_URL: import.meta.env.VITE_API_BASE_URL,
     };
-    console.log('Using Vite environment config');
     return viteConfig;
   }
 
   // Finally fall back to default
-  console.log('Using default config');
   return defaultConfig;
 }
 
