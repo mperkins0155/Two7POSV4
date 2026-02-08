@@ -1,0 +1,41 @@
+{
+    "title": "variants",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "item_id": {
+            "type": "integer",
+            "description": "Foreign key to items"
+        },
+        "name": {
+            "type": "string"
+        },
+        "price_adjustment": {
+            "type": "number",
+            "default": 0
+        },
+        "sku": {
+            "type": "string"
+        },
+        "is_active": {
+            "type": "boolean",
+            "default": true
+        },
+        "sort_order": {
+            "type": "integer",
+            "default": 0
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "required": [
+        "id",
+        "item_id",
+        "name"
+    ]
+}

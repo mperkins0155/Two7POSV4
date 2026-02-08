@@ -1,0 +1,78 @@
+{
+    "title": "orders",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "organization_id": {
+            "type": "integer",
+            "description": "Foreign key to organizations"
+        },
+        "order_number": {
+            "type": "string",
+            "description": "Unique order identifier"
+        },
+        "cashier_id": {
+            "type": "integer",
+            "description": "Foreign key to user_profiles"
+        },
+        "customer_name": {
+            "type": "string"
+        },
+        "customer_email": {
+            "type": "string"
+        },
+        "customer_phone": {
+            "type": "string"
+        },
+        "subtotal": {
+            "type": "number"
+        },
+        "tax_amount": {
+            "type": "number",
+            "default": 0
+        },
+        "discount_amount": {
+            "type": "number",
+            "default": 0
+        },
+        "tip_amount": {
+            "type": "number",
+            "default": 0
+        },
+        "total_amount": {
+            "type": "number"
+        },
+        "status": {
+            "type": "string",
+            "default": "pending"
+        },
+        "payment_method": {
+            "type": "string"
+        },
+        "payment_status": {
+            "type": "string",
+            "default": "unpaid"
+        },
+        "notes": {
+            "type": "string"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "completed_at": {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "required": [
+        "id",
+        "organization_id",
+        "order_number",
+        "subtotal",
+        "total_amount"
+    ]
+}

@@ -1,0 +1,19 @@
+[
+    {
+        "name": "Demo Coffee Shop",
+        "slug": "demo-coffee",
+        "business_type": "restaurant",
+        "email": "demo@coffeeshop.com",
+        "phone": "(555) 123-4567",
+        "address_line1": "123 Main Street",
+        "city": "San Francisco",
+        "state": "CA",
+        "postal_code": "94102",
+        "country": "US",
+        "timezone": "America/Los_Angeles",
+        "currency": "USD",
+        "status": "active",
+        "created_at": "2024-01-15 10:00:00",
+        "updated_at": "2024-01-15 10:00:00"
+    }
+]

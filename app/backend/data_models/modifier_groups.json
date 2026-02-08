@@ -1,0 +1,46 @@
+{
+    "title": "modifier_groups",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "organization_id": {
+            "type": "integer",
+            "description": "Foreign key to organizations"
+        },
+        "name": {
+            "type": "string"
+        },
+        "selection_type": {
+            "type": "string",
+            "description": "choose_one or choose_many"
+        },
+        "min_selections": {
+            "type": "integer",
+            "default": 0
+        },
+        "max_selections": {
+            "type": "integer"
+        },
+        "is_required": {
+            "type": "boolean",
+            "default": false
+        },
+        "sort_order": {
+            "type": "integer",
+            "default": 0
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "required": [
+        "id",
+        "organization_id",
+        "name",
+        "selection_type"
+    ]
+}

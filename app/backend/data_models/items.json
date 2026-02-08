@@ -1,0 +1,73 @@
+{
+    "title": "items",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "organization_id": {
+            "type": "integer",
+            "description": "Foreign key to organizations"
+        },
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "item_type": {
+            "type": "string",
+            "description": "product or service"
+        },
+        "sku": {
+            "type": "string"
+        },
+        "base_price": {
+            "type": "number"
+        },
+        "cost": {
+            "type": "number"
+        },
+        "tax_rate": {
+            "type": "number",
+            "default": 0
+        },
+        "category": {
+            "type": "string"
+        },
+        "image_url": {
+            "type": "string"
+        },
+        "is_active": {
+            "type": "boolean",
+            "default": true
+        },
+        "track_inventory": {
+            "type": "boolean",
+            "default": false
+        },
+        "current_stock": {
+            "type": "integer",
+            "default": 0
+        },
+        "low_stock_alert": {
+            "type": "integer"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "required": [
+        "id",
+        "organization_id",
+        "name",
+        "item_type",
+        "base_price"
+    ]
+}

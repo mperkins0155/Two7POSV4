@@ -1,0 +1,53 @@
+{
+    "title": "order_items",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "order_id": {
+            "type": "integer",
+            "description": "Foreign key to orders"
+        },
+        "item_id": {
+            "type": "integer",
+            "description": "Foreign key to items"
+        },
+        "variant_id": {
+            "type": "integer",
+            "description": "Foreign key to variants"
+        },
+        "item_name": {
+            "type": "string"
+        },
+        "variant_name": {
+            "type": "string"
+        },
+        "quantity": {
+            "type": "integer",
+            "default": 1
+        },
+        "unit_price": {
+            "type": "number"
+        },
+        "subtotal": {
+            "type": "number"
+        },
+        "notes": {
+            "type": "string"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "required": [
+        "id",
+        "order_id",
+        "item_name",
+        "quantity",
+        "unit_price",
+        "subtotal"
+    ]
+}

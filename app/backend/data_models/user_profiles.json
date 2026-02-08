@@ -1,0 +1,52 @@
+{
+    "title": "user_profiles",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "user_id": {
+            "type": "string",
+            "description": "User ID from auth system"
+        },
+        "organization_id": {
+            "type": "integer",
+            "description": "Foreign key to organizations"
+        },
+        "role": {
+            "type": "string",
+            "description": "owner, manager, or cashier"
+        },
+        "first_name": {
+            "type": "string"
+        },
+        "last_name": {
+            "type": "string"
+        },
+        "phone": {
+            "type": "string"
+        },
+        "pin_code": {
+            "type": "string"
+        },
+        "is_active": {
+            "type": "boolean",
+            "default": true
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updated_at": {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "required": [
+        "id",
+        "user_id",
+        "organization_id",
+        "role"
+    ]
+}

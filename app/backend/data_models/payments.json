@@ -1,0 +1,58 @@
+{
+    "title": "payments",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "organization_id": {
+            "type": "integer",
+            "description": "Foreign key to organizations"
+        },
+        "order_id": {
+            "type": "integer",
+            "description": "Foreign key to orders"
+        },
+        "amount": {
+            "type": "number"
+        },
+        "payment_method": {
+            "type": "string"
+        },
+        "helcim_transaction_id": {
+            "type": "string"
+        },
+        "helcim_card_token": {
+            "type": "string"
+        },
+        "card_last_four": {
+            "type": "string"
+        },
+        "card_brand": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string",
+            "default": "pending"
+        },
+        "error_message": {
+            "type": "string"
+        },
+        "processed_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "required": [
+        "id",
+        "organization_id",
+        "order_id",
+        "amount",
+        "payment_method"
+    ]
+}

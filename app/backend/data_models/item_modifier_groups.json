@@ -1,0 +1,31 @@
+{
+    "title": "item_modifier_groups",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Primary key, auto-increment"
+        },
+        "item_id": {
+            "type": "integer",
+            "description": "Foreign key to items"
+        },
+        "modifier_group_id": {
+            "type": "integer",
+            "description": "Foreign key to modifier_groups"
+        },
+        "sort_order": {
+            "type": "integer",
+            "default": 0
+        },
+        "created_at": {
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "required": [
+        "id",
+        "item_id",
+        "modifier_group_id"
+    ]
+}
