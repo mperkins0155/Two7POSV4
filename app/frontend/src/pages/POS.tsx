@@ -90,24 +90,39 @@ export default function POS() {
   return (
     <div className="h-screen flex flex-col">
       {/* Header */}
-      <header className="bg-primary text-primary-foreground p-4 flex justify-between items-center">
-        <div>
-          <h1 className="text-2xl font-bold">{organization?.name || 'POS System'}</h1>
-          <p className="text-sm opacity-90">
+      <header className="bg-primary text-primary-foreground p-3 md:p-4 flex flex-col gap-3 md:flex-row md:justify-between md:items-center">
+        <div className="text-center md:text-left">
+          <h1 className="text-xl md:text-2xl font-bold">{organization?.name || 'POS System'}</h1>
+          <p className="text-xs md:text-sm opacity-90">
             {userProfile?.first_name} {userProfile?.last_name} ({userProfile?.role})
           </p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="secondary" size="sm" onClick={() => navigate('/orders')}>
-            <History className="h-4 w-4 mr-2" />
+        <div className="flex flex-wrap justify-center md:justify-end gap-2 w-full md:w-auto">
+          <Button
+            variant="secondary"
+            size="sm"
+            className="h-8 px-2 text-xs md:h-9 md:px-3 md:text-sm"
+            onClick={() => navigate('/orders')}
+          >
+            <History className="h-4 w-4 mr-1 md:mr-2" />
             Orders
           </Button>
-          <Button variant="secondary" size="sm" onClick={() => navigate('/settings')}>
-            <Settings className="h-4 w-4 mr-2" />
+          <Button
+            variant="secondary"
+            size="sm"
+            className="h-8 px-2 text-xs md:h-9 md:px-3 md:text-sm"
+            onClick={() => navigate('/settings')}
+          >
+            <Settings className="h-4 w-4 mr-1 md:mr-2" />
             Settings
           </Button>
-          <Button variant="secondary" size="sm" onClick={handleLogout}>
-            <LogOut className="h-4 w-4 mr-2" />
+          <Button
+            variant="secondary"
+            size="sm"
+            className="h-8 px-2 text-xs md:h-9 md:px-3 md:text-sm"
+            onClick={handleLogout}
+          >
+            <LogOut className="h-4 w-4 mr-1 md:mr-2" />
             Logout
           </Button>
         </div>
