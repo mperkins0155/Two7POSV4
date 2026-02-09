@@ -16,7 +16,7 @@ dependencies:
     version: 0.0.58(eslint@9.39.2)(prettier@3.8.1)(vite@5.4.21)
   '@playwright/mcp':
     specifier: ^0.0.36
-    version: 0.0.36(hono@4.11.7)
+    version: 0.0.36(hono@4.11.9)
   '@radix-ui/react-accordion':
     specifier: ^1.2.0
     version: 1.2.12(@types/react-dom@18.3.7)(@types/react@18.3.27)(react-dom@18.3.1)(react@18.3.1)
@@ -102,8 +102,8 @@ dependencies:
     specifier: ^5.56.2
     version: 5.90.20(react@18.3.1)
   axios:
-    specifier: 1.6.0
-    version: 1.6.0
+    specifier: 1.12.0
+    version: 1.12.0
   class-variance-authority:
     specifier: ^0.7.1
     version: 0.7.1
@@ -831,13 +831,13 @@ packages:
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
     dev: false
 
-  /@hono/node-server@1.19.9(hono@4.11.7):
+  /@hono/node-server@1.19.9(hono@4.11.9):
     resolution: {integrity: sha512-vHL6w3ecZsky+8P5MD+eFfaGTyCeOHUIFYMGpQGbrBTSmNNoxv0if69rEZ5giu36weC5saFuznL411gRX7bJDw==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: ^4
     dependencies:
-      hono: 4.11.7
+      hono: 4.11.9
     dev: false
 
   /@hookform/resolvers@3.10.0(react-hook-form@7.71.1):
@@ -935,7 +935,7 @@ packages:
         optional: true
     dependencies:
       '@types/qs': 6.14.0
-      axios: 1.13.4
+      axios: 1.13.5
       eslint-config-prettier: 10.1.8(eslint@9.39.2)
       eslint-plugin-prettier: 5.5.5(eslint-config-prettier@10.1.8)(eslint@9.39.2)(prettier@3.8.1)
       lint-staged: 16.2.7
@@ -949,7 +949,7 @@ packages:
       - prettier
     dev: false
 
-  /@modelcontextprotocol/sdk@1.25.3(hono@4.11.7)(zod@3.25.76):
+  /@modelcontextprotocol/sdk@1.25.3(hono@4.11.9)(zod@3.25.76):
     resolution: {integrity: sha512-vsAMBMERybvYgKbg/l4L1rhS7VXV1c0CtyJg72vwxONVX0l4ZfKVAnZEWTQixJGTzKnELjQ59e4NbdFDALRiAQ==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -959,7 +959,7 @@ packages:
       '@cfworker/json-schema':
         optional: true
     dependencies:
-      '@hono/node-server': 1.19.9(hono@4.11.7)
+      '@hono/node-server': 1.19.9(hono@4.11.9)
       ajv: 8.17.1
       ajv-formats: 3.0.1(ajv@8.17.1)
       content-type: 1.0.5
@@ -1003,12 +1003,12 @@ packages:
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: false
 
-  /@playwright/mcp@0.0.36(hono@4.11.7):
+  /@playwright/mcp@0.0.36(hono@4.11.9):
     resolution: {integrity: sha512-dcW3V2xHZ1RD28+E4lb7+fwBluk6A0rWODA0g+slogWaw+O9Ly99+I+kDvlf8Ii6QvDqpmzOw7LlyVBvBCtYcg==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
-      '@modelcontextprotocol/sdk': 1.25.3(hono@4.11.7)(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.25.3(hono@4.11.9)(zod@3.25.76)
       commander: 13.1.0
       debug: 4.4.3
       dotenv: 17.2.3
@@ -3003,8 +3003,8 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /axios@1.13.4:
-    resolution: {integrity: sha512-1wVkUaAO6WyaYtCkcYCOx12ZgpGf9Zif+qXa4n+oYzK558YryKqiL6UWwd5DqiH3VRW0GYhTZQ/vlgJrCoNQlg==}
+  /axios@1.12.0:
+    resolution: {integrity: sha512-oXTDccv8PcfjZmPGlWsPSwtOJCZ/b6W5jAMCNcfwJbCzDckwG0jrYJFaWH1yvivfCXjVzV/SPDEhMB3Q+DSurg==}
     dependencies:
       follow-redirects: 1.15.11
       form-data: 4.0.5
@@ -3013,8 +3013,8 @@ packages:
       - debug
     dev: false
 
-  /axios@1.6.0:
-    resolution: {integrity: sha512-EZ1DYihju9pwVB+jg67ogm+Tmqc6JmhamRN6I4Zt8DfZu5lbcQGw3ozH9lFejSJgs/ibaef3A9PMXPLeefFGJg==}
+  /axios@1.13.5:
+    resolution: {integrity: sha512-cz4ur7Vb0xS4/KUN0tPWe44eqxrIu31me+fbang3ijiNscE129POzipJJA6zniq2C/Z6sJCjMimjS8Lc/GAs8Q==}
     dependencies:
       follow-redirects: 1.15.11
       form-data: 4.0.5
@@ -3997,8 +3997,8 @@ packages:
     dependencies:
       function-bind: 1.1.2
 
-  /hono@4.11.7:
-    resolution: {integrity: sha512-l7qMiNee7t82bH3SeyUCt9UF15EVmaBvsppY2zQtrbIhl/yzBTny+YUxsVjSjQ6gaqaeVtZmGocom8TzBlA4Yw==}
+  /hono@4.11.9:
+    resolution: {integrity: sha512-Eaw2YTGM6WOxA6CXbckaEvslr2Ne4NFsKrvc0v97JD5awbmeBLO5w9Ho9L9kmKonrwF9RJlW6BxT1PVv/agBHQ==}
     engines: {node: '>=16.9.0'}
     dev: false
 
