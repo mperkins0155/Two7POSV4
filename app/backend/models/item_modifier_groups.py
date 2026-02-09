@@ -1,5 +1,6 @@
 from core.database import Base
 from sqlalchemy import Column, DateTime, Integer
+from sqlalchemy.sql import func
 
 
 class Item_modifier_groups(Base):
@@ -10,4 +11,4 @@ class Item_modifier_groups(Base):
     item_id = Column(Integer, nullable=False)
     modifier_group_id = Column(Integer, nullable=False)
     sort_order = Column(Integer, nullable=True, default=0, server_default='0')
-    created_at = Column(DateTime(timezone=True), nullable=True)
+    created_at = Column(DateTime(timezone=True), nullable=True, server_default=func.now())

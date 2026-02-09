@@ -1,5 +1,6 @@
 from core.database import Base
 from sqlalchemy import Column, DateTime, Float, Integer, String
+from sqlalchemy.sql import func
 
 
 class Order_items(Base):
@@ -16,4 +17,4 @@ class Order_items(Base):
     unit_price = Column(Float, nullable=False)
     subtotal = Column(Float, nullable=False)
     notes = Column(String, nullable=True)
-    created_at = Column(DateTime(timezone=True), nullable=True)
+    created_at = Column(DateTime(timezone=True), nullable=True, server_default=func.now())

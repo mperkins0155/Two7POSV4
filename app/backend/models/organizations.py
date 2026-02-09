@@ -1,12 +1,11 @@
-from core.database import Base
-from sqlalchemy import Column, DateTime, Integer, String
+from models.base import BaseModel
+from sqlalchemy import Column, DateTime, String
 
 
-class Organizations(Base):
+class Organizations(BaseModel):
     __tablename__ = "organizations"
     __table_args__ = {"extend_existing": True}
 
-    id = Column(Integer, primary_key=True, index=True, autoincrement=True, nullable=False)
     name = Column(String, nullable=False)
     slug = Column(String, nullable=False)
     business_type = Column(String, nullable=True)
@@ -24,5 +23,3 @@ class Organizations(Base):
     helcim_api_token = Column(String, nullable=True)
     helcim_connected_at = Column(DateTime(timezone=True), nullable=True)
     status = Column(String, nullable=True, default='active', server_default='active')
-    created_at = Column(DateTime(timezone=True), nullable=True)
-    updated_at = Column(DateTime(timezone=True), nullable=True)

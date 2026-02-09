@@ -1,5 +1,6 @@
 from core.database import Base
 from sqlalchemy import Column, DateTime, Float, Integer, String
+from sqlalchemy.sql import func
 
 
 class Payments(Base):
@@ -18,4 +19,4 @@ class Payments(Base):
     status = Column(String, nullable=True, default='pending', server_default='pending')
     error_message = Column(String, nullable=True)
     processed_at = Column(DateTime(timezone=True), nullable=True)
-    created_at = Column(DateTime(timezone=True), nullable=True)
+    created_at = Column(DateTime(timezone=True), nullable=True, server_default=func.now())

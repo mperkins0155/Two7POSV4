@@ -1,5 +1,6 @@
 from core.database import Base
 from sqlalchemy import Column, DateTime, Float, Integer, String
+from sqlalchemy.sql import func
 
 
 class Orders(Base):
@@ -22,5 +23,5 @@ class Orders(Base):
     payment_method = Column(String, nullable=True)
     payment_status = Column(String, nullable=True, default='unpaid', server_default='unpaid')
     notes = Column(String, nullable=True)
-    created_at = Column(DateTime(timezone=True), nullable=True)
+    created_at = Column(DateTime(timezone=True), nullable=True, server_default=func.now())
     completed_at = Column(DateTime(timezone=True), nullable=True)
