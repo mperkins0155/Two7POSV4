@@ -102,8 +102,8 @@ dependencies:
     specifier: ^5.56.2
     version: 5.90.20(react@18.3.1)
   axios:
-    specifier: 1.12.0
-    version: 1.12.0
+    specifier: 1.13.5
+    version: 1.13.5
   class-variance-authority:
     specifier: ^0.7.1
     version: 0.7.1
@@ -930,7 +930,7 @@ packages:
       eslint-config-prettier: 10.1.8(eslint@9.39.2)
       eslint-plugin-prettier: 5.5.5(eslint-config-prettier@10.1.8)(eslint@9.39.2)(prettier@3.8.1)
       lint-staged: 16.2.7
-      qs: 6.14.1
+      qs: 6.15.0
       simple-git-hooks: 2.13.1
       vite: 5.4.21(@types/node@22.19.7)
     transitivePeerDependencies:
@@ -2921,16 +2921,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /axios@1.12.0:
-    resolution: {integrity: sha512-oXTDccv8PcfjZmPGlWsPSwtOJCZ/b6W5jAMCNcfwJbCzDckwG0jrYJFaWH1yvivfCXjVzV/SPDEhMB3Q+DSurg==}
-    dependencies:
-      follow-redirects: 1.15.11
-      form-data: 4.0.5
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
   /axios@1.13.5:
     resolution: {integrity: sha512-cz4ur7Vb0xS4/KUN0tPWe44eqxrIu31me+fbang3ijiNscE129POzipJJA6zniq2C/Z6sJCjMimjS8Lc/GAs8Q==}
     dependencies:
@@ -4276,8 +4266,8 @@ packages:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
 
-  /qs@6.14.1:
-    resolution: {integrity: sha512-4EK3+xJl8Ts67nLYNwqw/dsFVnCf+qR7RgXSK9jEEm9unao3njwMDdmsdvoKBKHzxd7tCYz5e5M+SnMjdtXGQQ==}
+  /qs@6.15.0:
+    resolution: {integrity: sha512-mAZTtNCeetKMH+pSjrb76NAM8V9a05I9aBZOHztWy/UqcJdQYNsf59vrRKWnojAT9Y+GbIvoTBC++CPHqpDBhQ==}
     engines: {node: '>=0.6'}
     dependencies:
       side-channel: 1.1.0
